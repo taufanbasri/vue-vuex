@@ -1,23 +1,30 @@
 <template>
-  <base-container title="Vuex">
+  <base-container title="Vuex" v-if="userIsAuthenticated">
     <the-counter></the-counter>
     <favorite-value></favorite-value>
     <button @click="increase({ value: 10 })">Add 10</button>
     <change-counter></change-counter>
   </base-container>
+  <base-container title="Auth">
+    <user-auth></user-auth>
+  </base-container>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 import BaseContainer from './components/BaseContainer.vue';
 import TheCounter from './components/TheCounter.vue';
 import ChangeCounter from './components/ChangeCounter.vue';
 import FavoriteValue from './components/FavoriteValue.vue';
+import UserAuth from './components/UserAuth.vue';
 
 export default {
   components: {
-    BaseContainer, TheCounter, ChangeCounter, FavoriteValue
+    BaseContainer, TheCounter, ChangeCounter, FavoriteValue, UserAuth
+  },
+  computed: {
+    ...mapGetters(['userIsAuthenticated'])
   },
   methods: {
     // addOne() {
