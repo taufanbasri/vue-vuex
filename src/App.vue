@@ -35,7 +35,7 @@ export default {
     //   })
     // }
 
-    ...mapActions(['increase'])
+    ...mapActions('numbers', ['increase'])
   },
 };
 </script>
